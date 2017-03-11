@@ -1,0 +1,21 @@
+version: '2'
+services: 
+  gnucash:
+    build: gnucash/
+    volumes:
+      - $GNUCASH_DATA_PATH/homedir:~/:rw
+      - $GNUCASH_DATA_PATH/config:/org/gnucash
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=unix$DISPLAY 
+  
+  mysql:
+    image: mysql
+    volumes:
+      - $GNUCASH_DATA_PATH/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+
+volumes:
+  ansible:
+    driver: local

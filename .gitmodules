@@ -1,0 +1,3 @@
+[submodule "mysql/gnucash"]
+	path = mysql/gnucash
+	url = https://github.com/daveyb/gnucash.git
